@@ -133,7 +133,8 @@ function info (req, res) {
               measure18: result.measure18,
               review_flag: result.review_flag,
               review_content: result.review_content,
-              review_score: result.review_score
+              review_score: result.review_score,
+              confirm_content: result.confirm_content,
             };
             // 继续后续操作
             cb(null);
@@ -235,7 +236,8 @@ function update (req, res) {
           measure18: req.body.measure18,
           review_flag: req.body.review_flag,
           review_content: req.body.remark,
-          review_score: req.body.review_score
+          review_score: req.body.review_score,
+          confirm_content: req.body.confirm,
           // qa_selection_casecol: req.body.value
         }, {
           where: {

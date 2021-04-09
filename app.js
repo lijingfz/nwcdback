@@ -19,6 +19,7 @@ var caseRuleRouter = require('./routes/nwcd_case_rule');
 var userRouter = require('./routes/user');
 var caseSelectionRouter = require('./routes/qa_selection_case');
 var caseResultRouter = require('./routes/qa_case_result');
+var manuallyAddCaseRouter = require('./routes/manuallyAddCase');
 // 引入Token验证中间件
 const verifyMiddleware = require('./routes/middleware/verify');
 
@@ -55,6 +56,8 @@ app.use('/admin', verifyMiddleware.verifyToken, adminRouter);
 app.use('/caserule', verifyMiddleware.verifyToken, caseRuleRouter);
 // jingamz userinfo
 app.use('/api/user', verifyMiddleware.verifyToken, userRouter);
+// jingamz manually add case
+app.use('/api/manuallyaddcase', verifyMiddleware.verifyToken, manuallyAddCaseRouter);
 
 
 

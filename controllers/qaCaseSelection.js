@@ -43,6 +43,12 @@ function list (req, res) {
       if(req.query.owner){
         whereCondition.owner = req.query.owner;
       }
+      if(req.query.if_assign){
+        whereCondition.if_assign = req.query.if_assign;
+      }
+      if(req.query.if_reviewed){
+        whereCondition.if_reviewed = req.query.if_reviewed;
+      }
       console.log(whereCondition,req.query.case_id)
       // 通过offset和limit使用admin的model去数据库中查询，并按照创建时间排序
       AdminModel
@@ -66,7 +72,8 @@ function list (req, res) {
               selection_date: dateFormat (v.selection_date, 'yyyy-mm-dd HH:MM:ss'),
               qa_selection_casecol: v.qa_selection_casecol,
               case_title: v.case_title,
-              if_assign: v.if_assign
+              if_assign: v.if_assign,
+              if_reviewed: v.if_reviewed
             };
             list.push (obj);
           });
@@ -195,7 +202,7 @@ function update (req, res) {
     checkParams: (cb) => {
 
       // 调用公共方法中的校验参数方法，成功继续后面操作，失败则传递错误信息到async最终方法
-      Common.checkParams (req.body, ['case_id', 'value', 'if_assign'], cb);
+      Common.checkParams (req.body, ['case_id', 'value', 'if_assign', 'if_reviewed'], cb);
     },
     // 更新方法，依赖校验参数方法
     update: cb => {
@@ -203,7 +210,8 @@ function update (req, res) {
       AdminModel
         .update ({
           qa_selection_casecol: req.body.value,
-          if_assign: req.body.if_assign
+          if_assign: req.body.if_assign,
+          if_reviewed: req.body.if_reviewed
         }, {
           where: {
             case_id: req.body.case_id

@@ -12,7 +12,8 @@ const qaSelectionCase = db.define('qa_selection_case', {
   selection_date: {type: Sequelize.DATE},
   qa_selection_casecol: {type: Sequelize.STRING(500)},
   case_title: {type: Sequelize.STRING(500)},
-  if_assign: {type: Sequelize.STRING(45)}
+  if_assign: {type: Sequelize.STRING(45)},
+  if_reviewed: {type: Sequelize.STRING(45)},
 }, {
   // 是否支持驼峰
   underscored: true,

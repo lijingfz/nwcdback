@@ -29,7 +29,8 @@ const qaCaseResult = db.define('qa_case_result', {
   measure20: {type: Sequelize.INTEGER, allowNull: false},
   review_content: {type: Sequelize.INTEGER, allowNull: false},
   review_flag: {type: Sequelize.STRING(10)},
-  review_score: {type: Sequelize.INTEGER, allowNull:false}
+  review_score: {type: Sequelize.INTEGER, allowNull:false},
+  confirm_content: {type: Sequelize.INTEGER, allowNull: false},
 }, {
   // 是否支持驼峰
   underscored: true,
