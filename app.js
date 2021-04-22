@@ -9,7 +9,7 @@ var multipart = require('connect-multiparty');
 
 
 var indexRouter = require('./routes/index');
-// 引入许愿管理模块路由文件
+
 var wishRouter = require('./routes/wish');
 // 引入管理员管理模块路由文件
 var adminRouter = require('./routes/admin');
@@ -42,6 +42,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(multipart());
 
 app.use('/api/login', indexRouter);
+
+app.use('/api',verifyMiddleware.verifyToken, indexRouter);
 
 app.use('/api/case', verifyMiddleware.verifyToken, caseSelectionRouter);
 

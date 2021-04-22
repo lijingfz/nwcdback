@@ -6,5 +6,7 @@ var router = express.Router ();
 const IndexController = require('../controllers/index');
 // 定义登录路由，POST请求
 router.post ('/', IndexController.login);
+
+router.post ('/update', IndexController.update);
 // 导出路由，供app.js文件调用
 module.exports = router;

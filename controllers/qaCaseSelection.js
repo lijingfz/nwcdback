@@ -36,9 +36,12 @@ function list (req, res) {
       let limit = parseInt (req.query.rows) || 20;
       // 设定一个查询条件对象
       let whereCondition = {};
-      // 如果查询用户名存在，查询对象增加用户名
+      
       if(req.query.reviewer){
         whereCondition.qa_selection_casecol = req.query.reviewer;
+      }
+      if(req.query.case_id){
+        whereCondition.case_id = req.query.case_id;
       }
       if(req.query.owner){
         whereCondition.owner = req.query.owner;
